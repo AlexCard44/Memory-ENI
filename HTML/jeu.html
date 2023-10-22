@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/jeu.css">
+    <title>MEMORY - Jeu</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>ENI - <span>MEMORY</span> - Jeu</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="inscription.html">S'inscrire</a></li>
+                <li><a href="connexion.html">Se connecter</a></li>
+                <li><a href="compte.html">Profil</a></li>
+                <li><a href="jeu.html">Jouer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <input type="button" id="lancement" class="bouton" value="C'est parti !"><br>
+    <input type="button" id="recharger" class="bouton" value="Rejouer !">
+
+    <div class="conteneur">
+        <h2>Derniers meilleurs scores :</h2>
+
+        <table class="score">
+            <thead class="score">
+                <tr class="score">
+                    <th>Pseudo</th>
+                    <th>Score</th>
+                    <th>Taille</th>
+                    <th>Choix Memory</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Tentez de gagner avec le moins d'essais possible.<br>
+            Appuyez sur la <strong title="Bon, pour l'instant il faut cliquer sur le bouton, je n'arrive pas à le faire avec la barre d'espace, déso...">barre d'espace</strong> pour relancer le jeu.</p>
+
+        <p>Nombre de coups : <span id="nb_coups_joues"></span></p>
+
+        <p id="victoire"></p>
+
+        <div id="grille_jeu">
+
+            
+
+            <table id="plateau">
+                <tr>
+                    <td><img id="0" src="../ressources/question.svg" alt="Point d'interrogation"></td>
+                    <td><img id="1" src="../ressources/question.svg" alt="Point d'interrogation"></td>
+                    <td><img id="2" src="../ressources/question.svg" alt="Point d'interrogation"></td>
+                </tr>
+                <tr>
+                    <td><img id="3" src="../ressources/question.svg" alt="Point d'interrogation"></td>
+                    <td><img id="4" src="../ressources/question.svg" alt="Point d'interrogation"></td>
+                    <td><img id="5" src="../ressources/question.svg" alt="Point d'interrogation"></td>
+                </tr>
+                <tr>
+                    <td><img id="6" src="../ressources/question.svg" alt="Point d'interrogation"></td>
+                    <td><img id="7" src="../ressources/question.svg" alt="Point d'interrogation"></td>
+                    <td><img id="8" src="../ressources/question.svg" alt="Point d'interrogation"></td>
+                </tr>
+                <tr>
+                    <td><img id="9" src="../ressources/question.svg" alt="Point d'interrogation"></td>
+                    <td><img id="10" src="../ressources/question.svg" alt="Point d'interrogation"></td>
+                    <td><img id="11" src="../ressources/question.svg" alt="Point d'interrogation"></td>
+                </tr>
+            </table>
+
+            
+        </div>
+
+    </div>
+    <script src="../JavaScript/jeu.js"></script>
+</body>
+
+</html>

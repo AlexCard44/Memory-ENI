@@ -1,0 +1,34 @@
+{
+    "legumes": [
+        {
+            "nom": "pomme",
+            "source": "../ressources/memory-legume/1.svg",
+            "valeur": "1"
+        },
+        {
+            "nom": "banane",
+            "source":"../ressources/memory-legume/2.svg",
+            "valeur": "2"
+        },
+        {
+            "nom": "brocoli",
+            "source":"../ressources/memory-legume/3.svg",
+            "valeur": "3"
+        },
+        {
+            "nom": "cerise",
+            "source":"../ressources/memory-legume/4.svg",
+            "valeur": "4"
+        },
+        {
+            "nom": "piment",
+            "source":"../ressources/memory-legume/5.svg",
+            "valeur": "5"
+        },
+        {
+            "nom": "fraise",
+            "source":"../ressources/memory-legume/6.svg",
+            "valeur": "6"
+        }
+    ]
+}

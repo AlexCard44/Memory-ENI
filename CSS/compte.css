@@ -1,0 +1,165 @@
+body {
+    font-family: sans-serif;
+    color: white;
+    background: linear-gradient(135deg, blue, red);
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style-type: none;
+    padding-inline-start: 0px;
+    background-color: black;
+    height: 3em;
+    width: 35vw;
+    border: white solid 1px;
+
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+section {
+    border: white solid 2px;
+    border-radius: 15px;
+    background-color: black;
+    padding: 20px;
+    width: 50vw;
+    height: 80vh;
+    margin: auto;
+}
+
+img {
+    width: 20%;
+    border-radius: 50%;
+    border: white 4px solid;
+}
+
+.profil {
+    text-align: center;
+}
+
+figure {
+    text-align: center;
+}
+
+figcaption {
+    text-align: center;
+    font-style: italic;
+}
+
+input[type="text"], input[type="password"], input[type="email"] {
+    background-color: black;
+    color: white;
+    border-style: none;
+}
+
+.infos {
+    font-size: 0.8em;
+    font-style: italic;
+    color: grey;
+}
+
+#avertissementNom {
+    display: none;
+    font-size: 0.8em;
+    color: red;
+}
+
+#errorName, #errorMdp, #errorMail, #imgMdpConf {
+    width: 18px;
+    height: 18px;
+}
+
+#rangeMdp {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: auto;
+}
+
+#couleurs {
+    display: flex;
+}
+
+.tricolor {
+    width: 20%;
+    height: 5px;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.jaune {
+    background-color: yellow;
+}
+
+.vert {
+    background-color: green;
+}
+
+#niveau {
+    display: flex;
+}
+
+.niveauIndic {
+    font-size: 0.8em;
+    width: 20%;
+    height: 5px;
+    color: red;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+.niveauIndic p {
+    margin-top: 5px;
+}
+
+.tricolor, .niveauIndic {
+    display: none;
+}
+
+.bouton {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px; 
+    /*border: solid green 2px; */
+    position: relative;
+}
+
+input[type="submit"], input[type="button"]  {
+    display: block;
+    margin: auto;
+}
+
+#appercu {
+    height: 200px;
+    width: 300px;
+    /*border: red solid 2px;*/
+    margin:auto;
+}
+
+#appercu img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+}
+
+#actuelle {
+    border: none; 
+}
+    

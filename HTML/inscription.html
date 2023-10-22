@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/formulaire.css">
+    <title>MEMORY - Formulaire d'inscription</title>
+</head>
+
+<body>
+    <header>
+        <h1>ENI - <span>MEMORY</span> - Jeu</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="inscription.html">S'inscrire</a></li>
+                <li><a href="connexion.html">Se connecter</a></li>
+                <li><a href="compte.html">Profil</a></li>
+                <li><a href="jeu.html">Jouer</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <form action="connexion.html" method="get">
+            <h1>Inscrivez-vous</h1>
+            <label for="nom">Nom d'utilisateur</label><br>
+            <input type="text" id="nom" name="nom" placeholder="3 caractères minimum" required>
+            <img id="errorName" src="../ressources/error.svg" alt="erreur">
+            <hr>
+            <p id="avertissementNom">Choisissez un pseudo contenant au moins 3 caractères</p>
+            <label for="mail">Entrez votre email</label><br>
+            <input type="email" id="email" name="email" placeholder="Votre email" required>
+            <img id=errorMail src="../ressources/error.svg" alt="error"><hr>
+            <label for="mdp">Mot de passe</label><br>
+            <input type="password" id="mdp" name="mdp" placeholder="Votre mot de passe" required>
+            <img id="errorMdp" src="../ressources/error.svg" alt="erreur">
+            <hr>
+            <p class="infos">Au moins un symbole, un chiffre, ainsi que 6 caractères minimum</p>
+            <div id="rangeMdp">
+                <div id="couleurs">
+                    <div class="tricolor orange" id="faible"></div>
+                    <div class="tricolor jaune" id="moyen"></div>
+                    <div class="tricolor vert" id="fort"></div>
+                </div>
+                <div id="niveau">
+                    <div class="niveauIndic" id="faibleC">
+                        <p>faible</p>
+                    </div>
+                    <div class="niveauIndic" id="moyenC">
+                        <p>moyen</p>
+                    </div>
+                    <div class="niveauIndic" id="fortC">
+                        <p>fort</p>
+                    </div>
+                </div>
+            </div><br>
+            <label for="mdpConf">Confirmez le mot de passe</label><br>
+            <input type="password" id="mdpConf" name="mdpConf" placeholder="Confirmez le mot de passe" required>
+            <img id="imgMdpConf" src="../ressources/error.svg" alt="error">
+            <hr>
+            <button type="submit" value="Création du compte" id="validation">Création du compte</button>
+            <button type="reset" value="annuler">Annuler</button>
+        </form>
+    </section>
+
+
+    <script src="../JavaScript/formulaire.js"></script>
+</body>
+
+</html>

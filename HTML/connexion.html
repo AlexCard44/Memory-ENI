@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/formulaire.css">
+    <title>MEMORY - Connexion</title>
+</head>
+<body>
+    <header>
+        <h1>ENI - <span>MEMORY</span> - Accueil</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="inscription.html">S'inscrire</a></li>
+                <li><a href="connexion.html">Se connecter</a></li>
+                <li><a href="compte.html">Profil</a></li>
+                <li><a href="jeu.html">Jouer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Se connecter</h2>
+
+        <form action="jeu.html" method="get">
+            <label for="email">Entrez votre email</label><br>
+            <input type="email" placeholder="ff@ff.fr" id="email" required><hr>
+            <label for="mdp">Mot de passe</label><br>
+            <input type="password" required id="mdp"><hr>
+            <input type="submit" value="Se connecter" id="valider">
+            <input type="reset" value="Annuler">
+        </form>
+    </section>
+    <script type="module" src="../JavaScript/connexion.js"></script>
+</body>
+</html>

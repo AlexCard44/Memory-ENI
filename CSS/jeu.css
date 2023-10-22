@@ -1,0 +1,109 @@
+body {
+    font-family: sans-serif;
+    color: white;
+    background: linear-gradient(135deg, blue, red);
+    min-height: 100vh;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style-type: none;
+    padding-inline-start: 0px;
+    background-color: black;
+    height: 3em;
+    width: 35vw;
+    border: white solid 1px;
+}
+
+#victoire {
+    font-size: 1.8em;
+    color:darkviolet;
+    font-weight: bold;
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.fruit {
+    display: none;
+    z-index: 0;
+}
+
+.mystere {
+    z-index: 1;
+}
+
+h1 {
+    text-align: center;
+}
+
+img {
+    display: block;
+    width: 85px;
+    height: 85px;
+    cursor: pointer;
+}
+
+.conteneur {
+    position: relative;
+    bottom: 100px;
+    text-align: center;;
+    border: white solid 2px;
+    border-radius: 15px;
+    width: 45vw;
+    height: 90vh;
+    margin: auto;
+    background-color: black;
+}
+
+table, td, tr {
+    border: white solid 1px;
+    margin: auto;
+} 
+
+td, th {
+    padding: 5px;
+}
+
+#grille_jeu {
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+    align-content: space-evenly;
+    flex-flow: row wrap;
+    width: 95%;
+    height: 50%;
+    margin: auto;
+}
+
+#grille_jeu table, #grille_jeu td, #grille_jeu tr {
+    border: none;
+}
+
+#plateau {
+    text-align: center;
+}
+
+.bouton {
+    background-color: rgb(212, 109, 233);
+    width: 175px;
+    height: 50px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-top: 5px;
+}
+
+#recharger {
+    background-color: red;
+}

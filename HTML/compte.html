@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/compte.css">
+    <title>MEMORY - Compte</title>
+</head>
+
+<body>
+    <header>
+        <h1>ENI - <span>MEMORY</span> - Profil</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="inscription.html">S'inscrire</a></li>
+                <li><a href="connexion.html">Se connecter</a></li>
+                <li><a href="compte.html">Profil</a></li>
+                <li><a href="jeu.html">Jouer</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="profil">
+            <h2>Profil</h2>
+            <img src="../ressources/animauxAnimes/3.webp" alt="Photo de profil">
+        </div>
+        <form action="jeu.html" method="get">
+            <label for="nom">Nom d'utilisateur</label><br>
+            <input type="text" name="nom" id="nom"><hr>
+            <label for="email">Email</label><br>
+            <input type="email" name="email" id="email"><hr>
+            <label for="theme">Choix du Memory</label><br>
+            <select name="theme" id="theme">
+                <option value="niet" disabled selected>-- Choisissez un thème</option>
+                <option value="legumes">Légumes</option>
+                <option value="dinosNoms">Dinosaures nommés</option>
+                <option value="dinos">Dinosaures tout court</option>
+                <option value="chiens">Chiens</option>
+                <option value="animauxDom">Animaux domestiques</option>
+                <option value="animauxAnimes">Animaux animés</option>
+                <option value="animaux">Animaux</option>
+                <option value="scrabble">Scrabble</option>
+            </select><br>
+            <div id="appercu"><img id="actuelle"></div><br>
+            <label for="taille">Taille du Memory</label><br>
+            <select name="taille" id="taille">
+                <option value="niet" disabled selected>-- Choisissez une taille</option>
+                <option value="12">4 * 3</option>
+                <option value="16">4 * 4</option>
+                <option value="20">5 * 4</option>
+                <option value="24">6 * 4</option>
+            </select>
+            <br>
+            <div class="bouton">
+                <input type="submit" value="Enregistrer Option">
+                <input type="button" value="Déconnexion" id="supprSess" onclick="window.location.href='connexion.html'">
+            </div>
+            
+            </form>
+
+</section>
+    <!--Il faudra faire une sorte d'import / export pour récupérer des données d'un fichier js à un autre (pour la récupération du profil)
+    A la déconnexion, supprimer le sessionStorage.
+    Prévoir bouton pour suppression du compte (du localStorage)-->
+    <script src="../JavaScript/profil.js"></script>
+</body>
+
+</html>
