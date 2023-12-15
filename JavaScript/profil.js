@@ -3,6 +3,15 @@ window.onload = init;
 function init() {
     document.getElementById('supprSess').addEventListener('click', deconnexion);
     document.getElementById('theme').addEventListener('change', vignette);
+    inputNomEtMail();
+}
+
+function inputNomEtMail() {
+    let profilConnecte = JSON.parse(sessionStorage.getItem("Profil"));
+    let nom = profilConnecte.NOM;
+    let email = profilConnecte.EMAIL;
+    document.getElementById("nom").value = nom;
+    document.getElementById("email").value = email;
 }
 
 function deconnexion() {

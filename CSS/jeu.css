@@ -55,15 +55,16 @@ img {
 }
 
 .conteneur {
-    position: relative;
-    bottom: 100px;
+    /* position: relative;
+    bottom: 100px; */
     text-align: center;;
     border: white solid 2px;
     border-radius: 15px;
     width: 45vw;
-    height: 90vh;
+    /* height: 90vh; */
     margin: auto;
     background-color: black;
+    padding-bottom: 50px;
 }
 
 table, td, tr {

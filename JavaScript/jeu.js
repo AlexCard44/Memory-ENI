@@ -2,11 +2,18 @@ window.onload = init;
 
 function init() {
     // trouver un jour comment faire pour la barre espace (32)
-    document.getElementById('lancement').addEventListener('click', initialisation);
+    //document.getElementById('lancement').addEventListener('click', initialisation);
+    initialisation();
+    document.addEventListener('keydown', function(event) {
+        if(event.key === ' ') {
+            initialisation();
+        }
+    });
     document.querySelectorAll('img').forEach((elem) => {
         elem.addEventListener('click', compar);
     });
-    document.getElementById('recharger').addEventListener('click', refresh);
+    //document.getElementById('recharger').addEventListener('click', refresh);
+    
 }
 
 let cliqueAB = 0;
@@ -33,6 +40,7 @@ let disposition = new Array(NB_CASES);
 
 
 function compar(event) {
+    console.log('fonction compar');
     cliqueAB++;
 
 
@@ -62,7 +70,7 @@ function compar(event) {
             if (nbPairesTrouvees == NB_PAIRES) {
                 console.log('gagné');
                 document.getElementById('victoire').innerText = "Bravo ! Tu as gagné en " + nbCoups + " coups !";
-                document.getElementById('lancement').setAttribute('disabled', 'disabled');
+                //document.getElementById('lancement').setAttribute('disabled', 'disabled');
             }
         } else {
             cliqueAB = 1;
@@ -72,11 +80,16 @@ function compar(event) {
     }
 }
 
-function initialisation() {
+function initialisation(event) {
 
-    let verifDansSession = sessionStorage.length < 2;
+    let verifSession = sessionStorage.getItem('Profil');
+    document.querySelectorAll('img').forEach((image) => {
+        if(image.style.pointerEvents) {
+            image.style.removeProperty('pointer-events');
+        }
+    })
 
-    if(verifDansSession) {
+    if(!verifSession) {
         alert("Veuillez d'abord vous connecter :)");
         document.location.href="connexion.html"; 
 
@@ -107,7 +120,10 @@ function initialisation() {
         console.log(disposition.toString());
         document.getElementById('victoire').innerHTML = "";
     }
-     }
+    
+
+    
+}
 
    
 

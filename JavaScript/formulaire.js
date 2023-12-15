@@ -18,34 +18,49 @@ let nomL;
 let mailL;
 let mdpConfL;
 let liste;
-let verifDansSession = sessionStorage.length > 1;
+let profilData = JSON.parse(localStorage.getItem("Profils")) || [];
+let verifDansSession = sessionStorage.getItem("Profil");
 /*export let mailC= mailP;
 export let nomC = nomL;*/
+import { hashPassword } from './module.js';
 
 function profil(event) {
 
-    if(verifDansSession) {
+    if(verifDansSession !== null) { // si quelqu'un est actuellement connecté, l'inscription est impossible
+        console.log("ligne 30");
         alert("Veuillez d'abord vous déconnecter :)");
         event.preventDefault();
-     } else {
-        if (localStorage.getItem(mailL) !== null) {
-            alert("Cette adresse mail est déjà connue");
-            event.preventDefault();
-        } else {
+     } else { // si personne n'est actuellement connecté, la procédure d'inscription peut se poursuivre
+            if (profilData.some((profil) => profil.EMAIL === mailP)) { // Si l'adresse email existe, l'utilisateur ne peut se (ré)inscrire
+                console.log("ligne 35");
+                alert("Cette adresse mail est déjà connue");
+                event.preventDefault(); 
+            } else { // Si l'email n'existe pas dans le localStorage, on continue la procédure d'inscription
+                alert("Je rentre dans le bon else");
     
-            if (nomP && mailP && mdpP && mdpConfP) {
-                liste = {
-                    NOM: nomL,
-                    MDP: mdpA
+                if (nomP && mailP && mdpP && mdpConfP) { // si tous les champs renseignés respectent les contraintes
+                    console.log("ligne 41");
+                    hashPassword(mdpA).then((hash) => {
+                        //console.log("mot de passe crypté ? " + hash);
+                        //mdpA = hash;
+                        liste = {
+                            EMAIL: mailL,
+                            NOM: nomL,
+                            MDP: hash
+                        }
+                        profilData.push(liste);
+                        localStorage.setItem("Profils", JSON.stringify(profilData));
+                        alert('Vous êtes bien inscrit !');
+                    });
+                                    
+                } else {
+                    alert("Formulaire incorrect, recommencez !");
+                    event.preventDefault();
                 }
-                localStorage.setItem(mailL, JSON.stringify(liste));
-                alert('Vous êtes bien inscrit !');
-                
-            }
-            console.log("nomP : " + nomP);
-            console.log("mailP : " + mailP);
-            console.log("mdpP : " + mdpP);
-            console.log("mdpConfP : " + mdpConfP);
+                console.log("nomP : " + nomP);
+                console.log("mailP : " + mailP);
+                console.log("mdpP : " + mdpP);
+                console.log("mdpConfP : " + mdpConfP);
         }
      }
     
@@ -178,4 +193,14 @@ function verifMdpBis(event) {
         mdpConfP = false;
     }
 }
+
+// export async function hashPassword(password) {
+//     const encoder = new TextEncoder();
+//     const data = encoder.encode(password);
+//     const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+//     const hashArray = Array.from(new Uint8Array(hashBuffer));
+//     const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+//     return hashHex;
+// }
+
 
