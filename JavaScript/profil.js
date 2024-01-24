@@ -27,25 +27,24 @@ function deconnexion() {
 }
 
 function vignette(event) {
-    console.log('oyé');
     let valeur = document.getElementById('theme').value;
     let vignette;
     switch(valeur) {
-        case "legumes": vignette = insertionVignette("memory-legume/memory_detail");
+        case "legumes": vignette = insertionVignette("legumes/memory_detail");
         break;
-        case "dinosNoms": vignette = insertionVignette("dinosauresAvecNom/memory_details_dinosaures_avec_nom");
+        case "dinosauresAvecNom": vignette = insertionVignette("dinosauresAvecNom/memory_details_dinosaures_avec_nom");
         break;
-        case "dinos": vignette = insertionVignette("dinosaures/memory_detail_dinosaures");
+        case "dinosaures": vignette = insertionVignette("dinosaures/memory_detail_dinosaures");
         break;
         case "chiens": vignette = insertionVignette("chiens/memory_details_chiens");
         break;
-        case "animauxDom": vignette = insertionVignette("animauxdomestiques/memory_detail_animaux_domestiques");
+        case "animauxDomestiques": vignette = insertionVignette("animauxDomestiques/memory_detail_animaux_domestiques");
         break;
         case "animauxAnimes": vignette = insertionVignette("animauxAnimes/memory_detail_animaux_animes");
         break;
         case "animaux": vignette = insertionVignette("animaux/memory_detail_animaux");
         break;
-        case "scrabble": vignette = insertionVignette("alphabet-scrabble/memory_detail_scrabble");
+        case "scrabble": vignette = insertionVignette("scrabble/memory_detail_scrabble");
     }
 
     let div = document.getElementById('appercu');
@@ -84,26 +83,26 @@ function majNiveau(theme) {
     const liste = document.getElementById("taille");
     liste.options.length = 2;
 
-    if (theme === "dinosNoms" || theme === "dinos" || theme === "chiens" || theme === "animauxDom" || theme === "animauxAnimes" || theme === "animaux" || theme === "scrabble") {
+    if (theme === "dinosauresAvecNom" || theme === "dinosaures" || theme === "chiens" || theme === "animauxDomestiques" || theme === "animauxAnimes" || theme === "animaux" || theme === "scrabble") {
         // ajouter l'option "4 x 4" dans le select
-        ajoutOptionNiveau("16", "4 x 4");
+        ajoutOptionNiveau("4 x 4");
     }
 
-    if (theme === "dinosNoms" || theme === "dinos" || theme === "chiens" || theme === "animauxDom" || theme === "animaux" || theme === "scrabble") {
+    if (theme === "dinosauresAvecNom" || theme === "dinosaures" || theme === "chiens" || theme === "animauxDomestiques" || theme === "animaux" || theme === "scrabble") {
         // ajouter l'option "4 x 5" dans le select
-        ajoutOptionNiveau("20", "4 x 5");
+        ajoutOptionNiveau("4 x 5");
     }
 
     if (theme === "chiens" || theme === "animaux" || theme === "scrabble") {
         // ajouter l'option "4 x 6" dans le select
-        ajoutOptionNiveau("24", "4 x 6");
+        ajoutOptionNiveau("4 x 6");
     }
 }
 
-function ajoutOptionNiveau(value, texte) {
+function ajoutOptionNiveau(value) {
     const select = document.getElementById("taille");
     let option = document.createElement("option");
     option.value = value;
-    option.text = texte;
+    option.text = value;
     select.add(option);
 }

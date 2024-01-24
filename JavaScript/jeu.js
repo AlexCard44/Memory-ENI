@@ -1,32 +1,27 @@
+import { utilisateurConnecte } from './module.js';
+
 window.onload = init;
 
 function init() {
     initialisation();
-    document.addEventListener('keydown', function(event) {
-        if(event.key === ' ') {
-            initialisation();
-        }
-    });
     document.querySelectorAll('img').forEach((elem) => {
         elem.addEventListener('click', compar);
     });
+    document.addEventListener('keydown', function(event) {
+        if(event.key === ' ') {
+            init();
+        }
+    });
+    
     
 }
 
 let cliqueAB = 0;
 let nbCoups = 0;
-const NB_PAIRES = 6;
+const NB_PAIRES = combienDePaires();
 const NB_CASES = NB_PAIRES * 2;
-let coupAB = 0;
-let etatCarte = 0;
-let adresseImg = [
-    '../ressources/memory-legume/1.svg',
-    '../ressources/memory-legume/2.svg',
-    '../ressources/memory-legume/3.svg',
-    '../ressources/memory-legume/4.svg',
-    '../ressources/memory-legume/5.svg',
-    '../ressources/memory-legume/6.svg',
-];
+let theme = JSON.parse(utilisateurConnecte()).THEME;
+let extension = quelleExtension(theme);
 let question = '../ressources/question.svg';
 
 let carteA;
@@ -99,19 +94,23 @@ function initialisation(event) {
         cliqueAB = 0;
     
         document.getElementById('nb_coups_joues').innerText = nbCoups;
-        document.querySelectorAll('img').forEach((elem) => {
+        /* document.querySelectorAll('img').forEach((elem) => {
             elem.src=question;
             //elem.style='pointer-events:all';
             console.log("valeur des images : " + elem );
-        });
+        }); */
+
+        // Appeler une fonction qui créé le tableau contenant les images
+        creationTableauImages();
     
-        for (j = 0; j < 2; j++) {
-            for (i = 0; i < NB_PAIRES; i++) {
+        for (let j = 0; j < 2; j++) {
+            for (let i = 0; i < NB_PAIRES; i++) {
                 let alea;
                 do {
-                    alea = Math.trunc(Math.random() * 12);
+                    alea = Math.trunc(Math.random() * NB_CASES);
+                    console.log(alea);
                 } while (disposition[alea] != undefined);
-                disposition[alea] = adresseImg[i];
+                disposition[alea] = "../ressources/" + theme + "/" + (i + 1) + extension;//adresseImg[i];
             }
         }
         console.log(disposition.toString());
@@ -130,8 +129,54 @@ function faceCachee(carte_a, carte_b) {
     document.getElementById('plateau').style="pointer-events:all";
 }
 
-function refresh() {
-    initialisation();
-    window.location.reload();
+function combienDePaires() {
+    let profil = JSON.parse(utilisateurConnecte());
+    let niveau = profil.NIVEAU;
+    let nbColonnes = niveau[0];
+    let nbLignes = niveau[4];
     
+    return nbColonnes * nbLignes / 2;
+}
+
+function creationTableauImages() {
+    let profil = JSON.parse(utilisateurConnecte());
+    let niveau = profil.NIVEAU;
+    let nbColonnes = niveau[0];
+    let nbLignes = niveau[4];
+    let elemTable = document.getElementById("plateau");
+    let compteur = 0;
+    
+    while(elemTable.firstChild) {
+        elemTable.removeChild(elemTable.firstChild);
+    }
+
+    for(let i = 0 ; i < nbLignes ; i++) {
+        let nouvelleLigne = document.createElement("tr");
+
+        for (let j = 0 ; j < nbColonnes ; j++) {
+            let nouvelleCase = document.createElement("td");
+            let nouvelleImage = document.createElement("img");
+            nouvelleImage.id = compteur++;
+            nouvelleImage.src = "../ressources/question.svg";
+            nouvelleImage.alt = "Point d'interrogation";
+            nouvelleCase.appendChild(nouvelleImage);
+            nouvelleLigne.appendChild(nouvelleCase);
+        }
+        elemTable.appendChild(nouvelleLigne);
+    }
+}
+
+function quelleExtension(theme) {
+    let extension;
+    if (theme === "animaux" || theme === "animauxAnimes" || theme === "chiens") {
+        extension = ".webp";
+    } else if (theme === "animauxDomestiques" || theme === "dinosaures" || theme === "dinosauresAvecNom") {
+        extension = ".jpg";
+    } else if (theme === "legumes") {
+        extension = ".svg";
+    } else {
+        extension = ".png";
+    }
+
+    return extension;
 }
