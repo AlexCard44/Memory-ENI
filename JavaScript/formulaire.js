@@ -46,7 +46,9 @@ function profil(event) {
                         liste = {
                             EMAIL: mailL,
                             NOM: nomL,
-                            MDP: hash
+                            MDP: hash,
+                            THEME: "legumes",
+                            NIVEAU: "12"
                         }
                         profilData.push(liste);
                         localStorage.setItem("Profils", JSON.stringify(profilData));

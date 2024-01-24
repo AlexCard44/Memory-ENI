@@ -3,15 +3,22 @@ window.onload = init;
 function init() {
     document.getElementById('supprSess').addEventListener('click', deconnexion);
     document.getElementById('theme').addEventListener('change', vignette);
+    document.getElementById("enregistrer").addEventListener('click', preferences);
     inputNomEtMail();
 }
 
 function inputNomEtMail() {
     let profilConnecte = JSON.parse(sessionStorage.getItem("Profil"));
+    let profilLocalConnecte = JSON.parse(localStorage.getItem("Profils")).find((profil) => profil.EMAIL === profilConnecte.EMAIL);
     let nom = profilConnecte.NOM;
     let email = profilConnecte.EMAIL;
+    let theme = profilLocalConnecte.THEME;
+    let niveau = profilLocalConnecte.NIVEAU;
     document.getElementById("nom").value = nom;
     document.getElementById("email").value = email;
+    document.getElementById("theme").value = theme;
+    document.getElementById("taille").value = niveau;
+    vignette();
 }
 
 function deconnexion() {
@@ -55,4 +62,18 @@ function insertionVignette(theme) {
     image.setAttribute('alt', 'Jolie image');
     image.setAttribute('id', 'actuelle');
     return image;
+}
+
+function preferences() {
+    let verifDansLocal = localStorage.getItem("Profils");
+    let verifDansSession = sessionStorage.getItem("Profil");
+    let profilSession = JSON.parse(verifDansSession);
+    let emailUtilisateurConnecte = profilSession.EMAIL;
+    let tableauProfils = JSON.parse(verifDansLocal);
+    let profil = tableauProfils.find((profil) => profil.EMAIL === emailUtilisateurConnecte);
+    profil.THEME = document.getElementById("theme").value;
+    profil.NIVEAU = document.getElementById("taille").value;
+
+    localStorage.setItem("Profils", JSON.stringify(tableauProfils));
+
 }
