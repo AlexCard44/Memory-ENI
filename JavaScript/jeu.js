@@ -1,8 +1,6 @@
 window.onload = init;
 
 function init() {
-    // trouver un jour comment faire pour la barre espace (32)
-    //document.getElementById('lancement').addEventListener('click', initialisation);
     initialisation();
     document.addEventListener('keydown', function(event) {
         if(event.key === ' ') {
@@ -12,7 +10,6 @@ function init() {
     document.querySelectorAll('img').forEach((elem) => {
         elem.addEventListener('click', compar);
     });
-    //document.getElementById('recharger').addEventListener('click', refresh);
     
 }
 
@@ -121,13 +118,7 @@ function initialisation(event) {
         document.getElementById('victoire').innerHTML = "";
     }
     
-
-    
 }
-
-   
-
-
 
 function affichageCarte(carte) {
     document.getElementById(carte).src = disposition[carte];

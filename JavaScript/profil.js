@@ -52,6 +52,7 @@ function vignette(event) {
     let act = document.getElementById('actuelle');
     
     div.replaceChild(vignette, act);
+    majNiveau(valeur);
 
 
 }
@@ -76,4 +77,33 @@ function preferences() {
 
     localStorage.setItem("Profils", JSON.stringify(tableauProfils));
 
+}
+
+function majNiveau(theme) {
+
+    const liste = document.getElementById("taille");
+    liste.options.length = 2;
+
+    if (theme === "dinosNoms" || theme === "dinos" || theme === "chiens" || theme === "animauxDom" || theme === "animauxAnimes" || theme === "animaux" || theme === "scrabble") {
+        // ajouter l'option "4 x 4" dans le select
+        ajoutOptionNiveau("16", "4 x 4");
+    }
+
+    if (theme === "dinosNoms" || theme === "dinos" || theme === "chiens" || theme === "animauxDom" || theme === "animaux" || theme === "scrabble") {
+        // ajouter l'option "4 x 5" dans le select
+        ajoutOptionNiveau("20", "4 x 5");
+    }
+
+    if (theme === "chiens" || theme === "animaux" || theme === "scrabble") {
+        // ajouter l'option "4 x 6" dans le select
+        ajoutOptionNiveau("24", "4 x 6");
+    }
+}
+
+function ajoutOptionNiveau(value, texte) {
+    const select = document.getElementById("taille");
+    let option = document.createElement("option");
+    option.value = value;
+    option.text = texte;
+    select.add(option);
 }
