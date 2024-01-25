@@ -1,3 +1,5 @@
+import { utilisateurConnecte } from "./module.js";
+
 window.onload = init;
 
 function init() {
@@ -8,17 +10,26 @@ function init() {
 }
 
 function inputNomEtMail() {
-    let profilConnecte = JSON.parse(sessionStorage.getItem("Profil"));
-    let profilLocalConnecte = JSON.parse(localStorage.getItem("Profils")).find((profil) => profil.EMAIL === profilConnecte.EMAIL);
+    let profilConnecte = JSON.parse(utilisateurConnecte());
     let nom = profilConnecte.NOM;
     let email = profilConnecte.EMAIL;
-    let theme = profilLocalConnecte.THEME;
-    let niveau = profilLocalConnecte.NIVEAU;
+    let theme = profilConnecte.THEME;
+    let niveau = profilConnecte.NIVEAU;
+    let select = document.getElementById("taille");
     document.getElementById("nom").value = nom;
     document.getElementById("email").value = email;
     document.getElementById("theme").value = theme;
     document.getElementById("taille").value = niveau;
     vignette();
+
+    for (let i = 1 ; i < select.options.length ; i++) {
+        const option = select.options[i];
+        if (option.value === niveau) {
+            option.selected = true;
+            break;
+        }
+    }
+
 }
 
 function deconnexion() {
