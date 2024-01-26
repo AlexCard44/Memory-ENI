@@ -183,55 +183,8 @@ function quelleExtension(theme) {
 }
 
 function gestionScores() {
-    if (localStorage.getItem("Scores")) {
-        // Logique d'affichage des scores...
-        let elemScores = document.getElementById("lignesScores");
 
-        while (elemScores.firstChild) {
-            elemScores.removeChild(elemScores.firstChild);
-        }
-
-        let titreTableauScores = document.getElementById("themeNiveau");
-        let profil = JSON.parse(utilisateurConnecte());
-        let theme = profil.THEME;
-        let niveau = profil.NIVEAU;
-        titreTableauScores.innerText = (theme.charAt(0).toUpperCase() + theme.slice(1)) + " - " + niveau;
-
-        let clefScores = JSON.parse(localStorage.getItem("Scores"));
-        let themeScore = clefScores.find((tema) => tema.THEME === theme);
-        let niveauScore = themeScore.NIVEAU;
-        let tableauScores = niveauScore[niveau];
-        
-
-        for (let i = 0 ; i < 5 ; i++) {
-
-            let tr = document.createElement("tr");
-            let tdPseudo = document.createElement("td");
-            let tdScore = document.createElement("td");
-            let tdDate = document.createElement("td");
-
-            if (i < tableauScores.length) {
-                // remplir le tableau html avec les données du localStorage
-                tdPseudo.innerText = tableauScores[i].PSEUDO;
-                tdScore.innerText = tableauScores[i].NB_COUPS;
-                tdDate.innerText = tableauScores[i].DATE;
-            } else {
-                // remlir le tableau html avec "-" car le localStorage contient moins de 5 scores
-                console.log("Moins de 5 scores dans le localStorage");
-                tdPseudo.innerText = "-";
-                tdScore.innerText = "-";
-                tdDate.innerText = "-";
-            }
-
-            tr.appendChild(tdPseudo);
-            tr.appendChild(tdScore);
-            tr.appendChild(tdDate);
-            elemScores.appendChild(tr);
-        }
-
-
-    } else {
-        // Initialisation des grilles de scores dans le localStorage...
+    if (!localStorage.getItem("Scores")) { // Initialisation de la grille de scores dans le localStorage
         let listeScores = [
             {
                 THEME: "animaux",
@@ -299,6 +252,51 @@ function gestionScores() {
             }
         ]
         localStorage.setItem("Scores", JSON.stringify(listeScores));
+    }
+
+    // Logique d'affichage des scores...
+    let elemScores = document.getElementById("lignesScores");
+
+    while (elemScores.firstChild) {
+        elemScores.removeChild(elemScores.firstChild);
+    }
+
+    let titreTableauScores = document.getElementById("themeNiveau");
+    let profil = JSON.parse(utilisateurConnecte());
+    let theme = profil.THEME;
+    let niveau = profil.NIVEAU;
+    titreTableauScores.innerText = (theme.charAt(0).toUpperCase() + theme.slice(1)) + " - " + niveau;
+
+    let clefScores = JSON.parse(localStorage.getItem("Scores"));
+    let themeScore = clefScores.find((tema) => tema.THEME === theme);
+    let niveauScore = themeScore.NIVEAU;
+    let tableauScores = niveauScore[niveau];
+    
+
+    for (let i = 0 ; i < 5 ; i++) {
+
+        let tr = document.createElement("tr");
+        let tdPseudo = document.createElement("td");
+        let tdScore = document.createElement("td");
+        let tdDate = document.createElement("td");
+
+        if (i < tableauScores.length) {
+            // remplir le tableau html avec les données du localStorage
+            tdPseudo.innerText = tableauScores[i].PSEUDO;
+            tdScore.innerText = tableauScores[i].NB_COUPS;
+            tdDate.innerText = tableauScores[i].DATE;
+        } else {
+            // remlir le tableau html avec "-" car le localStorage contient moins de 5 scores
+            console.log("Moins de 5 scores dans le localStorage");
+            tdPseudo.innerText = "-";
+            tdScore.innerText = "-";
+            tdDate.innerText = "-";
+        }
+
+        tr.appendChild(tdPseudo);
+        tr.appendChild(tdScore);
+        tr.appendChild(tdDate);
+        elemScores.appendChild(tr);
     }
 }
 
