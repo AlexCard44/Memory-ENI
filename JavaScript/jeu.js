@@ -12,7 +12,7 @@ function init() {
             init();
         }
     });
-    
+    gestionScores();
     
 }
 
@@ -62,7 +62,8 @@ function compar(event) {
             if (nbPairesTrouvees == NB_PAIRES) {
                 console.log('gagné');
                 document.getElementById('victoire').innerText = "Bravo ! Tu as gagné en " + nbCoups + " coups !";
-                //document.getElementById('lancement').setAttribute('disabled', 'disabled');
+                // Appeler une fonction qui ajoute le score dans le localStorage + suppression du 6e élément s'il y en a un. Appeler la fonction gestionScores() à la fin de cette fonction
+                ajoutScore(nbCoups);
             }
         } else {
             cliqueAB = 1;
@@ -179,4 +180,120 @@ function quelleExtension(theme) {
     }
 
     return extension;
+}
+
+function gestionScores() {
+    if (localStorage.getItem("Scores")) {
+        // Logique d'affichage des scores...
+    } else {
+        // Initialisation des grilles de scores dans le localStorage...
+        let listeScores = [
+            {
+                THEME: "animaux",
+                NIVEAU: {
+                    "3 x 4": [],
+                    "4 x 4": [],
+                    "4 x 5": [],
+                    "4 x 6": []
+                }
+            },
+            {
+                THEME: "animauxAnimes",
+                NIVEAU: {
+                    "3 x 4": [],
+                    "4 x 4": []
+                }
+            },
+            {
+                THEME: "animauxDomestiques",
+                NIVEAU: {
+                    "3 x 4": [],
+                    "4 x 4": [],
+                    "4 x 5": []
+                }
+            },
+            {
+                THEME: "chiens",
+                NIVEAU: {
+                    "3 x 4": [],
+                    "4 x 4": [],
+                    "4 x 5": [],
+                    "4 x 6": []
+                }
+            },
+            {
+                THEME: "dinosaures",
+                NIVEAU: {
+                    "3 x 4": [],
+                    "4 x 4": [],
+                    "4 x 5": []
+                }
+            },
+            {
+                THEME: "dinosauresAvecNom",
+                NIVEAU: {
+                    "3 x 4": [],
+                    "4 x 4": [],
+                    "4 x 5": []
+                }
+            },
+            {
+                THEME: "legumes",
+                NIVEAU: {
+                    "3 x 4": []
+                }
+            },
+            {
+                THEME: "scrabble",
+                NIVEAU: {
+                    "3 x 4": [],
+                    "4 x 4": [],
+                    "4 x 5": [],
+                    "4 x 6": []
+                }
+            }
+        ]
+        localStorage.setItem("Scores", JSON.stringify(listeScores));
+    }
+}
+
+function ajoutScore(nbCoups) {
+    let profil = JSON.parse(utilisateurConnecte());
+    let theme = profil.THEME;
+    let niveau = profil.NIVEAU;
+    let pseudo = profil.NOM;
+    console.log("Foncion ajoutScores(). Le thème est " + theme + ", le niveau est " + niveau);
+
+    let clefScores = JSON.parse(localStorage.getItem("Scores"));
+    let themeScore = clefScores.find((tema) => tema.THEME === theme);
+    let niveauScore = themeScore.NIVEAU;
+    let dateDuJour = new Date();
+    let annee = dateDuJour.getFullYear().toString();
+    let mois = (dateDuJour.getMonth()+1).toString();
+    let jour = dateDuJour.getDate().toString();
+
+    if (mois.length === 1) {
+        mois = "0" + mois;
+    }
+    if (jour.length === 1) {
+        jour = "0" + jour;
+    }
+
+    let infos = {
+        PSEUDO: pseudo,
+        NB_COUPS: nbCoups,
+        DATE: `${jour}/${mois}/${annee}`
+    }
+
+    niveauScore[niveau].push(infos); 
+
+    niveauScore[niveau].sort((a, b) => (a.NB_COUPS > b.NB_COUPS ? 1 : -1));
+
+    if (niveauScore[niveau].length === 6) {
+        niveauScore[niveau].pop();
+    }
+
+    localStorage.setItem("Scores", JSON.stringify(clefScores));
+
+    // appeler la fonction gestionScores() pour afficher les scores à l'utilisateur
 }

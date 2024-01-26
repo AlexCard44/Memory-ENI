@@ -36,10 +36,8 @@ function profil(event) {
                 alert("Cette adresse mail est déjà connue");
                 event.preventDefault(); 
             } else { // Si l'email n'existe pas dans le localStorage, on continue la procédure d'inscription
-                alert("Je rentre dans le bon else");
-    
+                
                 if (nomP && mailP && mdpP && mdpConfP) { // si tous les champs renseignés respectent les contraintes
-                    console.log("ligne 41");
                     hashPassword(mdpA).then((hash) => {
                         //console.log("mot de passe crypté ? " + hash);
                         //mdpA = hash;
