@@ -29,56 +29,6 @@
     <input type="button" id="recharger" class="bouton" value="Rejouer !"> -->
 
     <div class="conteneur">
-        <!-- <h2>Derniers meilleurs scores :</h2>
-
-        <table class="score">
-            <thead class="score">
-                <tr class="score">
-                    <th>Pseudo</th>
-                    <th>Score</th>
-                    <th>Taille</th>
-                    <th>Choix Memory</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table> -->
 
         <p>Tentez de gagner avec le moins d'essais possible.<br>
             Appuyez sur la <strong title="ça fonctionne !!!">barre d'espace</strong> pour relancer le jeu.</p>
@@ -89,12 +39,26 @@
 
         <div id="grille_jeu">
 
-            
-
             <table id="plateau"></table>
-
             
         </div>
+
+        <h2>Meilleurs scores :</h2>
+
+        <table class="score">
+            <thead class="score">
+                <tr class="score">
+                    <th>Pseudo</th>
+                    <th>Score</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="lignesScores">
+            </tbody>
+            <tfoot>
+                <tr><td colspan="3" id="themeNiveau"></td></tr>
+            </tfoot>
+        </table>
 
     </div>
     <script type="module" src="../JavaScript/jeu.js"></script>
