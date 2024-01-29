@@ -13,7 +13,7 @@ function init() {
         }
     });
     gestionScores();
-    
+    document.addEventListener('keydown', doKonamiCode);
 }
 
 let cliqueAB = 0;
@@ -28,6 +28,8 @@ let carteA;
 let carteB;
 let nbPairesTrouvees = 0;
 let disposition = new Array(NB_CASES);
+let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let konamiCompteur = 0;
 
 
 
@@ -62,8 +64,10 @@ function compar(event) {
             if (nbPairesTrouvees == NB_PAIRES) {
                 console.log('gagné');
                 document.getElementById('victoire').innerText = "Bravo ! Tu as gagné en " + nbCoups + " coups !";
-                // Appeler une fonction qui ajoute le score dans le localStorage + suppression du 6e élément s'il y en a un. Appeler la fonction gestionScores() à la fin de cette fonction
+                
                 ajoutScore(nbCoups);
+
+                // Ajouter la fonction d'affichage du chat victorieux
             }
         } else {
             cliqueAB = 1;
@@ -341,3 +345,27 @@ function ajoutScore(nbCoups) {
     // appeler la fonction gestionScores() pour afficher les scores à l'utilisateur
     gestionScores();
 }
+
+function doKonamiCode(event) {
+    if (event.key === konamiCode[konamiCompteur]) {
+        konamiCompteur++;
+        if (konamiCompteur === konamiCode.length) {
+            let body = document.getElementById("body");
+            body.style.transition = "transform 1.5s linear, scale 1.5s linear";
+            body.style.transform = "rotate(180deg) scale(3)";
+
+            setTimeout(() => {
+                body.style.transform = "rotate(360deg) scale(1)";
+            }, 1500);
+
+            setTimeout(() => {
+                body.style.removeProperty("transition");
+                body.style.removeProperty("transform");
+            }, 3001);
+            konamiCompteur = 0;
+        }
+    } else {
+        konamiCompteur = 0;
+    }
+    console.log(konamiCompteur);
+  }
