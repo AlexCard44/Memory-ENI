@@ -68,6 +68,7 @@ function compar(event) {
                 ajoutScore(nbCoups);
 
                 // Ajouter la fonction d'affichage du chat victorieux
+                afficherVictoire();
             }
         } else {
             cliqueAB = 1;
@@ -345,6 +346,30 @@ function ajoutScore(nbCoups) {
     // appeler la fonction gestionScores() pour afficher les scores à l'utilisateur
     gestionScores();
 }
+
+function afficherVictoire() {
+    document.addEventListener("click", bloquer, true);
+    let victoire = document.getElementById("victoireBis");
+    victoire.style.display = "block";
+    victoire.style.animation = "chute 5s";
+    
+
+    window.setTimeout(() => {
+        victoire.style.removeProperty("animation");
+        victoire.style.display = "none";
+        activer();
+    }, 5001);
+    
+    console.log("coucou");  
+  }
+
+  function bloquer(event) {
+    event.preventDefault();
+  }
+
+  function activer() {
+    document.removeEventListener("click", bloquer, true);
+  }
 
 function doKonamiCode(event) {
     if (event.key === konamiCode[konamiCompteur]) {
