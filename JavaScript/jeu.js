@@ -358,7 +358,7 @@ function afficherVictoire() {
         victoire.style.removeProperty("animation");
         victoire.style.display = "none";
         activer();
-    }, 5001);
+    }, 4950);
     
     console.log("coucou");  
   }
